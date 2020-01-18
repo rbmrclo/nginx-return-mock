@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+    networks:
+      - backend
+
+  reverse-proxy:
+    image: nginx:1.17.6-alpine
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    volumes:
+      - ./reverse-proxy:/etc/nginx
+    networks:
+      - backend
+
+networks:
+  backend:
