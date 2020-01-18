@@ -42,3 +42,11 @@ Content-Type: text/plain; charset=utf-8
 Content-Length: 57
 Connection: keep-alive
 ```
+
+#### Confirm catch_all
+
+```
+$ curl http://0.0.0.0/foobar
+
+404 page not found
+```
